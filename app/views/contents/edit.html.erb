@@ -1,0 +1,8 @@
+<h1>Modification</h1>
+
+<%= simple_form_for [@concert, @content] do |f| %>
+  <%= f.input :title %>
+  <%= f.input :description %>
+  <%= f.input :image, as: :file %>
+  <%= f.submit "Modifier" %>
+<% end %>

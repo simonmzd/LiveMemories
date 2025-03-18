@@ -1,0 +1,7 @@
+<h1>@content.title</h1>
+
+<%= @content.description%>
+<%= @content.user.username%>
+
+<%= link_to 'Retour à la liste', concert_contents_path(@content.concert) %>
+<%= link_to " 🗑️ ", concert_content_path(@content.concert, @content), data: { turbo_method: :delete, turbo_confirm: "Voulez-vous vraiment supprimer ?" }%>
