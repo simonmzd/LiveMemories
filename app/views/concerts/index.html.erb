@@ -1,10 +1,17 @@
 <h1>Concert</h1>
-<% @concerts.each do |concert| %>
-  <%= concert.title %>
-  <%= concert.description %>
-  <%= concert.date %>
-  <%= concert.location %>
-  <%= concert.public %>
-  <%= concert.venue %>
-  <%= cl_image_tag concert.image.first.key %>
-<% end %>
+<div class="container">
+  <% @concerts.each do |concert| %>
+    <div>
+      <%= concert.title %>
+      <%= concert.description %>
+      <%= concert.date %>
+      <%= concert.localisation %>
+      <%= concert.public %>
+      <%= concert.venue %>
+      <%= link_to concert_path(concert) do  %>
+        <%= cl_image_tag concert.image.key, width: 400, height: 300, crop: :fill %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+<%= link_to "Créer un concert", new_concert_path %>

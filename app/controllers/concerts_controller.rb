@@ -5,9 +5,7 @@ class ConcertsController < ApplicationController
     @concerts = Concert.all
   end
 
-  def show
-    @concert = Concert.new
-  end
+  def show; end
 
   def new
     @concert = Concert.new
@@ -15,6 +13,7 @@ class ConcertsController < ApplicationController
 
   def create
     @concert = Concert.new(concert_params)
+    @concert.user = current_user
     @concert.save
     redirect_to concert_path(@concert)
   end
@@ -26,6 +25,6 @@ class ConcertsController < ApplicationController
   end
 
   def concert_params
-    params.require(:concert).permit(:title, :date, :location, :description, :genre, :public, :venue, :image)
+    params.require(:concert).permit(:title, :date, :localisation, :description, :genre, :public, :venue, :image, :user_id)
   end
 end
