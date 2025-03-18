@@ -1,7 +1,7 @@
 class User < ApplicationRecord
-  has_many :concerts
-  has_many :contents
-  has_many :reviews
+  has_many :concerts, dependent: :destroy
+  has_many :contents, dependent: :destroy
+  has_many :reviews, dependent: :destroy
   has_many :participations, dependent: :destroy
   # has_many :attended_concerts, through: :participations, source: :concerts, class: "Concert"
   validates :username, presence: true
