@@ -8,4 +8,5 @@ class Concert < ApplicationRecord
   validates :localisation, presence: true
   validates :public, presence: true
   validates :venue, presence: true
+  has_one_attached :photo
 end
