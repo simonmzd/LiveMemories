@@ -6,7 +6,7 @@ class ConcertsController < ApplicationController
   end
 
   def show
-    @contents = @concert.contents
+    @concert = Concert.new
   end
 
   def new
@@ -15,12 +15,8 @@ class ConcertsController < ApplicationController
 
   def create
     @concert = Concert.new(concert_params)
-
-    if @concert.save
-      redirect_to concert_path(@concert)
-    else
-      render :new, status: :unprocessable_entity
-    end
+    @concert.save
+    redirect_to concert_path(@concert)
   end
 
   private
@@ -30,6 +26,6 @@ class ConcertsController < ApplicationController
   end
 
   def concert_params
-    params.require(:concert).permit(:title, :date, :location, :description)
+    params.require(:concert).permit(:title, :date, :location, :description, :genre, :public, :venue, :image)
   end
 end

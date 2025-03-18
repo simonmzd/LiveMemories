@@ -1,0 +1,10 @@
+<h1>Concert</h1>
+<% @concerts.each do |concert| %>
+  <%= concert.title %>
+  <%= concert.description %>
+  <%= concert.date %>
+  <%= concert.location %>
+  <%= concert.public %>
+  <%= concert.venue %>
+  <%= cl_image_tag concert.image.first.key %>
+<% end %>
