@@ -1,11 +1,13 @@
 class ConcertsController < ApplicationController
-  before_action :set_concert, only: [:show]
+  before_action :set_concert, only: %i[show edit update destroy]
 
   def index
     @concerts = Concert.all
   end
 
-  def show; end
+  def show
+    @contents = @concert.contents
+  end
 
   def new
     @concert = Concert.new
@@ -14,8 +16,26 @@ class ConcertsController < ApplicationController
   def create
     @concert = Concert.new(concert_params)
     @concert.user = current_user
-    @concert.save
-    redirect_to concert_path(@concert)
+    if @concert.save
+      redirect_to concert_path(@concert)
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  def edit; end
+
+  def update
+    if @concert.update(concert_params)
+      redirect_to concert_path(@concert)
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @concert.destroy
+    redirect_to concerts_path
   end
 
   private
