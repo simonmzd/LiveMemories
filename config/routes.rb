@@ -16,4 +16,5 @@ Rails.application.routes.draw do
     end
     resources :participations, only: %i[create destroy]
   end
+  get "dashboard", to: "pages#dashboard"
 end
