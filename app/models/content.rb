@@ -4,4 +4,5 @@ class Content < ApplicationRecord
   has_many :reviews, dependent: :destroy
   validates :title, presence: true
   validates :description, presence: true
+  has_one_attached :image
 end

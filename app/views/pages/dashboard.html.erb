@@ -3,5 +3,7 @@
     <td><%= concert.title %></td>
     <td><%= concert.date.strftime("%d/%m/%Y") %></td>
     <td><%= concert.description %></td>
+    <td><%= link_to " ✏️ ", edit_concert_path(concert) %></td>
+    <td><%= link_to " 🗑️ ", concert_path(concert), data: { turbo_method: :delete, turbo_confirm: "Voulez-vous vraiment supprimer ?" } %></td>
   </tr>
 <% end %>
