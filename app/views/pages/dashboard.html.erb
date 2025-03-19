@@ -3,7 +3,18 @@
     <td><%= concert.title %></td>
     <td><%= concert.date.strftime("%d/%m/%Y") %></td>
     <td><%= concert.description %></td>
+    <td><%= cl_image_tag concert.image.key, width: 400, height: 300, crop: :fill %></td>
     <td><%= link_to " ✏️ ", edit_concert_path(concert) %></td>
     <td><%= link_to " 🗑️ ", concert_path(concert), data: { turbo_method: :delete, turbo_confirm: "Voulez-vous vraiment supprimer ?" } %></td>
+  </tr>
+<% end %>
+
+<% @my_contents.each do |content| %>
+  <tr style="text-align: center;">
+    <td><%= content.title %></td>
+    <td><%= content.description %></td>
+    <td><%= cl_image_tag content.image.key, width: 400, height: 300, crop: :fill %></td>
+    <td><%= link_to " ✏️ ", edit_concert_content_path(content.concert, content) %></td>
+    <td><%= link_to " 🗑️ ", concert_content_path(content.concert, content), data: { turbo_method: :delete, turbo_confirm: "Voulez-vous vraiment supprimer ?" } %></td>
   </tr>
 <% end %>

@@ -1,5 +1,5 @@
 class ContentsController < ApplicationController
-  before_action :set_concert, only: %i[index show new create destroy]
+  before_action :set_concert, only: %i[index show new create edit update destroy]
   before_action :set_content, only: %i[edit update destroy]
 
   def index
@@ -24,12 +24,12 @@ class ContentsController < ApplicationController
   def edit; end
 
   def update
-    @memorie.update(memorie_params)
+    @content.update(content_params)
     redirect_to dashboard_path
   end
 
   def destroy
-    @booking.destroy
+    @content.destroy
     redirect_to dashboard_path
   end
 
@@ -40,7 +40,7 @@ class ContentsController < ApplicationController
   end
 
   def set_content
-    @content = @concert.content.find(params[:id])
+    @content = @concert.contents.find(params[:id])
   end
 
   def content_params
