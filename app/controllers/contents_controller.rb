@@ -15,8 +15,10 @@ class ContentsController < ApplicationController
   end
 
   def create
-    @content = @concert.content.new(content_params)
+    @content = @concert.contents.new(content_params)
     @content.user = current_user
+    @content.save
+    redirect_to concerts_path(@concert)
   end
 
   def edit
