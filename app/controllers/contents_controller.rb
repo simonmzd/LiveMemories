@@ -1,9 +1,9 @@
 class ContentsController < ApplicationController
   before_action :set_concert, only: %i[index show new create destroy]
-  before_action :set_content, only: %i[destroy]
+  before_action :set_content, only: %i[edit update destroy]
 
   def index
-    @contents = Content.all
+    @contents = @concert.contents
   end
 
   def show
@@ -21,13 +21,16 @@ class ContentsController < ApplicationController
     redirect_to concerts_path(@concert)
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
+    @memorie.update(memorie_params)
+    redirect_to dashboard_path
   end
 
   def destroy
+    @booking.destroy
+    redirect_to dashboard_path
   end
 
   private
