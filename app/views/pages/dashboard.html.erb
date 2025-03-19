@@ -1,0 +1,7 @@
+<% @my_concerts.each do |concert| %>
+  <tr style="text-align: center;">
+    <td><%= concert.title %></td>
+    <td><%= concert.date.strftime("%d/%m/%Y") %></td>
+    <td><%= concert.description %></td>
+  </tr>
+<% end %>
