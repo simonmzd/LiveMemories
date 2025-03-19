@@ -8,6 +8,7 @@ class ContentsController < ApplicationController
 
   def show
     @content = Content.new
+    @concert = @content.concert
   end
 
   def new
