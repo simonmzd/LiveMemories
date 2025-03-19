@@ -9,7 +9,11 @@
       <%= concert.public %>
       <%= concert.venue %>
       <%= link_to concert_path(concert) do  %>
-        <%= cl_image_tag concert.image.key, width: 400, height: 300, crop: :fill %>
+        <% if concert.image.attached? %>
+          <%= cl_image_tag concert.image.key, width: 400, height: 300, crop: :fill %>
+        <% else %>
+          <%= image_tag "Beyoncé.jpg", width: 400, height: 300 %>
+        <% end %>
       <% end %>
     </div>
   <% end %>
