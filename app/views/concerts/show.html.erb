@@ -3,8 +3,9 @@
 <p><%= @concert.description %></p>
 
 <% @contents.each do |content| %>
-  <%= link_to content_path(content) do %>
-    <%= cl_image_tag content.image.key, width: 400, height: 300, crop: :fill %>
+  <% if content.image.attached? %>
+      <%= cl_image_tag content.image.key, width: 400, height: 300, crop: :fill %>
+    <% else %>
   <% end %>
 <% end %>
 

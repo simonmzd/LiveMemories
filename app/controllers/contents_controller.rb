@@ -18,7 +18,7 @@ class ContentsController < ApplicationController
     @content = @concert.contents.new(content_params)
     @content.user = current_user
     @content.save
-    redirect_to concerts_path(@concert)
+    redirect_to concert_path(@concert)
   end
 
   def edit; end
@@ -44,6 +44,6 @@ class ContentsController < ApplicationController
   end
 
   def content_params
-    params.require(:content).permit(:title, :description, :concert_id, :user_id)
+    params.require(:content).permit(:title, :description, :concert_id, :user_id, :image)
   end
 end
