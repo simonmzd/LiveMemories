@@ -1,5 +1,15 @@
 <h1><%= @concert.title %></h1>
 
-<%= @concert.description %>
+<p><%= @concert.description %></p>
+
+<% @contents.each do |content| %>
+  <%= link_to content_path(content) do %>
+    <%= cl_image_tag content.image.key, width: 400, height: 300, crop: :fill %>
+  <% end %>
+<% end %>
+
 <%= link_to "Retour à la liste", concerts_path %>
+
+<%= link_to "Supprimer ce concert", concert_path(@concert), data: { turbo_method: :delete, turbo_confirm: "Voulez vous supprimer ?" }  %>
+
 <%= link_to "Ajouter un contenu", new_concert_content_path(@concert) %>
