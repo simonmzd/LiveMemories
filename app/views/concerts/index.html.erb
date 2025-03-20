@@ -1,21 +1,76 @@
-<h1>Concert</h1>
-<div class="container">
-  <% @concerts.each do |concert| %>
-    <div>
-      <%= concert.title %>
-      <%= concert.description %>
-      <%= concert.date %>
-      <%= concert.localisation %>
-      <%= concert.public %>
-      <%= concert.venue %>
-      <%= link_to concert_path(concert) do  %>
-        <% if concert.image.attached? %>
-          <%= cl_image_tag concert.image.key, width: 400, height: 300, crop: :fill %>
-        <% else %>
-          <%= image_tag "Beyoncé.jpg", width: 400, height: 300 %>
-        <% end %>
+<div class="home-container">
+  <main>
+    <% if user_signed_in? %>
+      <h1>Hello, <%= current_user.username %> !</h1>
+    <% else %>
+      <h1>Bienvenue !</h1>
+    <% end %>
+    <div class="search-bar">
+      <%= form_with url: concerts_path, method: :get, local: true, class: "search-form" do %>
+        <%= text_field_tag :search, params[:search], placeholder: "Concert, artiste, lieu, style, date", class: "search-input" %>
+        <%= button_tag "✖", type: "reset", class: "clear-search" %>
       <% end %>
     </div>
-  <% end %>
+    <div class="location-filter">
+      <div class="location">
+        <span>📍 <%= params[:location].presence || "Paris" %></span>
+      </div>
+      <div class="location-change">
+        <%= form_with url: concerts_path, method: :get, local: true, class: "location-form" do %>
+          <%= select_tag :location, options_for_select(["Paris", "London", "New York", "Tokyo"], params[:location].presence || "Paris"), class: "location-select" %>
+          <%= submit_tag "Changer", class: "location-submit" %>
+        <% end %>
+      </div>
+    </div>
+    <div class="filters">
+      <%= form_with url: concerts_path, method: :get, local: true, class: "filter-form" do %>
+        <%= hidden_field_tag :location, params[:location].presence || "Paris" %>
+        <%= select_tag :style, options_for_select(["Tous", "Indie Rock", "Pop", "Electro", "Rock"], params[:style].presence || "Tous"), class: "filter-select" %>
+        <%= select_tag :date_range, options_for_select(["Tous", "Cette semaine", "Ce mois", "Prochain mois"], params[:date_range].presence || "Tous"), class: "filter-select" %>
+        <%= submit_tag "Filtrer", class: "filter-submit" %>
+      <% end %>
+    </div>
+    <section class="upcoming-events">
+      <% if @concerts.any? %>
+        <% @concerts.each do |concert| %>
+          <div class="event-row">
+            <div class="event-date">
+              <span class="month"><%= concert.date.strftime("%b").upcase %></span>
+              <span class="day"><%= concert.date.day %></span>
+              <span class="weekday"><%= concert.date.strftime("%a").upcase %></span>
+            </div>
+            <%= link_to concert_path(concert), class: "event-card-link" do %>
+              <div class="event-card">
+                <div class="event-image">
+                  <% if concert.image.attached? %>
+                    <%= cl_image_tag concert.image.key, width: 300, height: 150, crop: :fill, class: "event-img" %>
+                  <% else %>
+                    <%= image_tag "Beyoncé.jpg", alt: concert.title, width: 300, height: 150, class: "event-img" %>
+                  <% end %>
+                </div>
+                <div class="event-details">
+                  <h3><%= concert.title %></h3>
+                  <p>
+                    <span class="style">🎵 <%= concert.genre %></span>
+                    <span class="venue">🏟 <%= concert.venue %></span>
+                  </p>
+                  <p class="description"><%= concert.description %></p>
+                  <p class="location">📍 <%= concert.localisation %></p>
+                  <p class="public">👥 <%= concert.public %> personnes attendues</p>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      <% else %>
+        <p>Aucun concert à venir pour le moment.</p>
+      <% end %>
+    </section>
+    <% if user_signed_in? %>
+      <%= link_to "Créer un nouveau concert", new_concert_path, class: "btn" %>
+      <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, class: "link" %>
+    <% else %>
+      <%= link_to "Retour", root_path, class: "link" %>
+    <% end %>
+  </main>
 </div>
-<%= link_to "Créer un concert", new_concert_path %>
