@@ -1,26 +1,46 @@
-<h1><%= @concert.title %></h1>
+<div class="page-container">
 
-<p><%= @concert.description %></p>
-<p><%= @concert.genre %></p>
-<p><%= @concert.date %></p>
-<p><%= @concert.localisation %></p>
-<p><%= @concert.public %></p>
-<p><%= @concert.venue %></p>
+  <div class="concert-hero">
 
-<%= cl_image_tag @concert.image.key, width: 400, height: 300, crop: :fill %>
+    <%= link_to concerts_path, class: "back-button" do %>
+      <i class="fa-solid fa-arrow-left"></i>
+    <% end %>
 
-<% if @contents.any? %>
-  <% @contents.each do |content| %>
-    <% if content.image.attached? %>
-      <%= link_to concert_content_path(content.concert, content) do %>
-        <%= cl_image_tag content.image.key, width: 400, height: 300, crop: :fill %>
+
+    <div class="concert-image">
+      <%= cl_image_tag @concert.image.key %>
+    </div>
+
+    <div class="concert-info">
+      <div class="concert-info-content">
+
+
+        <div class="concert-details">
+          <p class="concert-date"><%= @concert.date.strftime("%Y-%m-%d") %></p>
+          <h1 class="concert-title"><%= @concert.title %></h1>
+          <p class="concert-location"><%= @concert.venue %>, <%= @concert.localisation %></p>
+        </div>
+
+
+        <div class="concert-stats">
+          <p class="content-count"><%= @concert.contents.count %> Photos & Videos</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="concert-content-section">
+    <% @contents.each do |content| %>
+      <% if content.image.attached? %>
+        <%= cl_image_tag content.image.key %>
       <% end %>
     <% end %>
-  <% end %>
-<% else %>
-  <p>Aucun contenu disponible pour ce concert.</p>
-<% end %>
+  </div>
 
-<%= link_to "Retour à la liste", concerts_path %>
+  <div class="add-content-button">
+    <%= link_to new_concert_content_path(@concert), class: "add-button" do %>
+      <i class="fa-solid fa-image"></i>
+    <% end %>
+  </div>
+</div>
 
-<%= link_to "Ajouter un contenu", new_concert_content_path(@concert) %>
