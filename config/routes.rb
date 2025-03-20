@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   get "auth", to: "pages#auth"
   get "dashboard", to: "pages#dashboard"
 
-
   resources :concerts do
     resources :contents do
       resources :votes, only: %i[create destroy update]

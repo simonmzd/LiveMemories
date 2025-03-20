@@ -9,7 +9,7 @@
     <h1>TROUVE LES ÉVÉNEMENTS RIEN QUE POUR TOI !</h1>
     <% if user_signed_in? %>
       <%= link_to "Voir les concerts", concerts_path, class: "btn" %>
-      <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, class: "link" %>
+      <%= link_to "Déconnexion", destroy_user_session_path, data: { turbo_method: :delete } %>
     <% else %>
       <%= link_to "CONNEXION/INSCRIPTION", auth_path, class: "btn" %>
     <% end %>
