@@ -1,24 +1,42 @@
-<h1><%= @concert.title %></h1>
+<div class="page-container">
 
-<p><%= @concert.description %></p>
-<p><%= @concert.genre %></p>
-<p><%= @concert.date %></p>
-<p><%= @concert.localisation %></p>
-<p><%= @concert.public %></p>
-<p><%= @concert.venue %></p>
+  <div class="concert-hero">
 
-<%= cl_image_tag @concert.image.key, width: 400, height: 300, crop: :fill %>
+    <%= link_to concerts_path, class: "back-button" do %>
+      <i class="fa-solid fa-arrow-left"></i>
+    <% end %>
 
+    <div class="concert-image">
+      <%= cl_image_tag @concert.image.key %>
+    </div>
 
-<% @contents.each do |content| %>
-  <% if content.image.attached? %>
-      <%= cl_image_tag content.image.key, width: 400, height: 300, crop: :fill %>
-    <% else %>
-  <% end %>
-<% end %>
+    <div class="concert-info">
+      <div class="concert-info-content">
 
-<%= link_to "Retour à la liste", concerts_path %>
+        <div class="concert-details">
+          <p class="concert-date"><%= @concert.date.strftime("%Y-%m-%d") %></p>
+          <h1 class="concert-title"><%= @concert.title %></h1>
+          <p class="concert-location"><%= @concert.venue %>, <%= @concert.localisation %></p>
+        </div>
 
-<%= link_to "Supprimer ce concert", concert_path(@concert), data: { turbo_method: :delete, turbo_confirm: "Voulez vous supprimer ?" }  %>
+        <div class="concert-stats">
+          <p class="content-count"><%= @concert.contents.count %> Photos & Videos</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<%= link_to "Ajouter un contenu", new_concert_content_path(@concert) %>
+  <div class="concert-content-section">
+    <% @contents.each do |content| %>
+      <% if content.image.attached? %>
+        <%= cl_image_tag content.image.key %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="add-content-button">
+    <%= link_to new_concert_content_path(@concert), class: "add-button" do %>
+      <i class="fa-solid fa-image"></i>
+    <% end %>
+  </div>
+</div>
