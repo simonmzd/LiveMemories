@@ -1,3 +1,11 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-<%= link_to "Liste des concerts", concerts_path %>
+<div class="home-container">
+  <header>
+    <div class="logo">LOGO</div>
+  </header>
+  <main>
+    <h1>BIENVENUE, <%= current_user.email %> !</h1>
+    <p>Voici votre espace personnel.</p>
+    <%= link_to "Voir les concerts", concerts_path, class: "btn" %>
+    <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, class: "link" %>
+  </main>
+</div>

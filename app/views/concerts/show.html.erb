@@ -6,6 +6,7 @@
       <i class="fa-solid fa-arrow-left"></i>
     <% end %>
 
+
     <div class="concert-image">
       <%= cl_image_tag @concert.image.key %>
     </div>
@@ -13,11 +14,13 @@
     <div class="concert-info">
       <div class="concert-info-content">
 
+
         <div class="concert-details">
           <p class="concert-date"><%= @concert.date.strftime("%Y-%m-%d") %></p>
           <h1 class="concert-title"><%= @concert.title %></h1>
           <p class="concert-location"><%= @concert.venue %>, <%= @concert.localisation %></p>
         </div>
+
 
         <div class="concert-stats">
           <p class="content-count"><%= @concert.contents.count %> Photos & Videos</p>
@@ -40,3 +43,4 @@
     <% end %>
   </div>
 </div>
+

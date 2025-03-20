@@ -7,7 +7,8 @@ class ContentsController < ApplicationController
   end
 
   def show
-    @content = Content.new
+    @content = Content.find(params[:id])
+    @concert = @content.concert
   end
 
   def new

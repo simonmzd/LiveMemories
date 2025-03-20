@@ -1,1 +1,293 @@
-// Specific CSS for your home-page
+@import "../config/common";
+
+.home-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  color: #000000;
+  padding: 0;
+}
+
+main {
+  padding: 20px;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  text-align: left;
+  color: #000000;
+}
+
+.search-bar {
+  width: 100%;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.search-form {
+  position: relative;
+  width: 100%;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 40px 12px 15px;
+  border: none;
+  border-radius: 25px;
+  font-size: 14px;
+  background-color: #f5f5f5;
+  color: #000000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.search-input::placeholder {
+  color: #999999;
+}
+
+.clear-search {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: #8b5cf6;
+  cursor: pointer;
+}
+
+.location-filter {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.location {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  font-size: 16px;
+  font-weight: 600;
+  color: #000000;
+}
+
+.event-count {
+  background: #8b5cf6;
+  color: #ffffff;
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.location-change {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.location-form {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.location-select {
+  padding: 8px;
+  border: none;
+  border-radius: 20px;
+  background-color: #f5f5f5;
+  font-size: 14px;
+  color: #000000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.location-submit {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 20px;
+  background: #8b5cf6;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.filter-form {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.filter-select {
+  padding: 8px;
+  border: none;
+  border-radius: 20px;
+  background-color: #f5f5f5;
+  font-size: 14px;
+  color: #000000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.filter-submit {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 20px;
+  background: #8b5cf6;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.upcoming-events {
+  width: 100%;
+}
+
+h2 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  text-align: left;
+  color: #000000;
+}
+
+.event-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.event-date {
+  text-align: center;
+  padding: 10px;
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  width: 60px;
+  flex-shrink: 0;
+}
+
+.month {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: #8b5cf6;
+}
+
+.day {
+  display: block;
+  font-size: 18px;
+  font-weight: 700;
+  color: #000000;
+}
+
+.weekday {
+  display: block;
+  font-size: 12px;
+  font-weight: 400;
+  color: #000000;
+}
+
+.event-card-link {
+  text-decoration: none;
+  color: inherit;
+  flex: 1;
+}
+
+.event-card {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  flex: 1;
+}
+
+.event-image {
+  width: 100%;
+}
+
+.event-img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.event-details {
+  padding: 10px;
+  background: #ffffff;
+}
+
+.event-details h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #000000;
+}
+
+.style, .venue {
+  display: inline;
+  font-size: 12px;
+  color: #666666;
+  font-weight: 400;
+}
+
+.style::after {
+  content: " • ";
+  color: #666666;
+}
+
+.events-more {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.events-more-link {
+  font-size: 14px;
+  color: #8b5cf6;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.events-more-arrow {
+  font-size: 14px;
+  color: #8b5cf6;
+  text-decoration: none;
+}
+
+.link {
+  color: #000000;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 20px;
+  display: block;
+  text-align: center;
+}
+
+.link:hover {
+  color: #8b5cf6;
+}

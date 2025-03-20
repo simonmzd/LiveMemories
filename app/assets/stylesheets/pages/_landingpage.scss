@@ -1,0 +1,13 @@
+@import "../config/common";
+
+.landing-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.illustration img {
+  max-width: 200px;
+  height: auto;
+  margin-bottom: 20px;
+}
