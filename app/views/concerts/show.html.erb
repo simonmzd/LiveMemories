@@ -10,9 +10,9 @@
 <%= cl_image_tag @concert.image.key, width: 400, height: 300, crop: :fill %>
 
 <% if @contents.any? %>
-  <%= link_to concert_content_path(@contents.first.concert, @contents.first) do %>
-    <% @contents.each do |content| %>
-      <% if content.image.attached? %>
+  <% @contents.each do |content| %>
+    <% if content.image.attached? %>
+      <%= link_to concert_content_path(content.concert, content) do %>
         <%= cl_image_tag content.image.key, width: 400, height: 300, crop: :fill %>
       <% end %>
     <% end %>
