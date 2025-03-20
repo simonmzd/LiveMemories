@@ -1,4 +1,26 @@
 <h1><%= @concert.title %></h1>
 
-<%= @concert.description %>
+<p><%= @concert.description %></p>
+<p><%= @concert.genre %></p>
+<p><%= @concert.date %></p>
+<p><%= @concert.localisation %></p>
+<p><%= @concert.public %></p>
+<p><%= @concert.venue %></p>
+
+<%= cl_image_tag @concert.image.key, width: 400, height: 300, crop: :fill %>
+
+<% if @contents.any? %>
+  <%= link_to concert_content_path(@contents.first.concert, @contents.first) do %>
+    <% @contents.each do |content| %>
+      <% if content.image.attached? %>
+        <%= cl_image_tag content.image.key, width: 400, height: 300, crop: :fill %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% else %>
+  <p>Aucun contenu disponible pour ce concert.</p>
+<% end %>
+
 <%= link_to "Retour à la liste", concerts_path %>
+
+<%= link_to "Ajouter un contenu", new_concert_content_path(@concert) %>

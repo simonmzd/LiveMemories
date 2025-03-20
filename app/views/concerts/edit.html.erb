@@ -1,0 +1,12 @@
+<h1>Modifier un concert</h1>
+<%= simple_form_for [@concert] do |f| %>
+  <%= f.input :title %>
+  <%= f.input :description %>
+  <%= f.input :genre %>
+  <%= f.input :date %>
+  <%= f.input :localisation %>
+  <%= f.input :public %>
+  <%= f.input :venue %>
+  <%= f.input :image, as: :file %>
+  <%= f.submit "Modifier" %>
+<% end %>
