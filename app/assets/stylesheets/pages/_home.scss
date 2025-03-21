@@ -58,7 +58,7 @@ h1 {
   background: none;
   border: none;
   font-size: 16px;
-  color: #8b5cf6;
+  color: #4D0EFF;
   cursor: pointer;
 }
 
@@ -80,7 +80,7 @@ h1 {
 }
 
 .event-count {
-  background: #8b5cf6;
+  background: #4D0EFF;
   color: #ffffff;
   padding: 5px 10px;
   border-radius: 15px;
@@ -114,7 +114,7 @@ h1 {
   padding: 8px 15px;
   border: none;
   border-radius: 20px;
-  background: #8b5cf6;
+  background: #4D0EFF;
   color: #ffffff;
   font-size: 14px;
   font-weight: 600;
@@ -150,7 +150,7 @@ h1 {
   padding: 8px 15px;
   border: none;
   border-radius: 20px;
-  background: #8b5cf6;
+  background: #4D0EFF;
   color: #ffffff;
   font-size: 14px;
   font-weight: 600;
@@ -191,7 +191,7 @@ h2 {
   display: block;
   font-size: 12px;
   font-weight: 600;
-  color: #8b5cf6;
+  color: #4D0EFF;
 }
 
 .day {
@@ -246,7 +246,8 @@ h2 {
   color: #000000;
 }
 
-.style, .venue {
+.style,
+.venue {
   display: inline;
   font-size: 12px;
   color: #666666;

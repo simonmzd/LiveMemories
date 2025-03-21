@@ -2,9 +2,9 @@
   <main>
     <% if user_signed_in? %>
       <div class="d-flex justify-content-between align-items-center mb-3">
-        <h1 class="mb-0">Hello, <%= current_user.username %> !</h1>
+        <h1 class="mb-0 me-5">Hello, <%= current_user.username %> !</h1>
         <%= link_to dashboard_path, class: "text-decoration-none ms-5" do %>
-          <i class="fa-solid fa-user fs-3"></i>
+          <i class="fa-solid fa-user fs-3" style="color: #4D0EFF"></i>
         <% end %>
       </div>
     <% else %>
@@ -32,9 +32,9 @@
         <% @concerts.each do |concert| %>
           <div class="event-row">
             <div class="event-date">
-              <span class="month"><%= concert.date.strftime("%b").upcase %></span>
+              <span class="weekday"><%= jour_en_francais(concert.date) %></span>
               <span class="day"><%= concert.date.day %></span>
-              <span class="weekday"><%= concert.date.strftime("%a").upcase %></span>
+              <span class="month"><%= mois_en_francais(concert.date) %></span>
             </div>
             <%= link_to concert_path(concert), class: "event-card-link" do %>
               <div class="event-card">
@@ -64,7 +64,9 @@
       <% end %>
     </section>
     <% if user_signed_in? %>
-      <%= link_to "Créer un nouveau concert", new_concert_path, class: "btn" %>
+      <%= link_to new_concert_path do %>
+        <i class="fa-solid fa-plus add_concert_btn"></i>
+      <% end %>
       <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, class: "link" %>
     <% else %>
       <%= link_to "Retour", root_path, class: "link" %>

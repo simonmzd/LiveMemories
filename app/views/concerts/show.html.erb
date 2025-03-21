@@ -11,7 +11,7 @@
     <div class="concert-info">
       <div class="concert-info-content">
         <div class="concert-details">
-          <p class="concert-date"><%= @concert.date.strftime("%Y-%m-%d") %></p>
+          <p class="concert-date"><%= @concert.date.strftime("%d/%m/%Y") %></p>
           <h1 class="concert-title"><%= @concert.title %></h1>
           <p class="concert-location"><%= @concert.venue %>, <%= @concert.localisation %></p>
         </div>
@@ -24,7 +24,6 @@
   </div>
 
   <div class="concert-contents-section">
-    <!-- Colonne gauche -->
     <div class="content-column-left">
       <% @contents.each_with_index do |content, index| %>
         <% if content.image.attached? && index.even? %>
@@ -35,7 +34,6 @@
       <% end %>
     </div>
 
-    <!-- Colonne droite -->
     <div class="content-column-right">
       <% @contents.each_with_index do |content, index| %>
         <% if content.image.attached? && index.odd? %>

@@ -1,12 +1,19 @@
-<h1>Modifier un concert</h1>
-<%= simple_form_for [@concert] do |f| %>
-  <%= f.input :title %>
-  <%= f.input :description %>
-  <%= f.input :genre %>
-  <%= f.input :date %>
-  <%= f.input :localisation %>
-  <%= f.input :public %>
-  <%= f.input :venue %>
-  <%= f.input :image, as: :file %>
-  <%= f.submit "Modifier" %>
-<% end %>
+<div class="container">
+  <%= link_to concerts_path, class: "back-button" do %>
+    <i class="fa-solid fa-arrow-left"></i>
+  <% end %>
+  <div class="mt-5 pt-4">
+    <h1 style="color: white">Modifier le concert</h1>
+      <%= simple_form_for [@concert] do |f| %>
+      <%= f.input :title, label: "Titre du concert" %>
+      <%= f.input :description, label: "Description" %>
+      <%= f.input :genre, label: "Genre musical" %>
+      <%= f.input :date, label: "Date du concert" %>
+      <%= f.input :localisation, label: "Ville" %>
+      <%= f.input :public, label: "Nombre de participants attendus" %>
+      <%= f.input :venue, label: "Salle de concert" %>
+      <%= f.input :image, as: :file, label: "Image de l'événement" %>
+      <%= f.submit "Modifier", class: "form_btn" %>
+    <% end %>
+  </div>
+</div>
