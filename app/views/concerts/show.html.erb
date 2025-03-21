@@ -1,11 +1,8 @@
 <div class="page-container">
-
   <div class="concert-hero">
-
     <%= link_to concerts_path, class: "back-button" do %>
       <i class="fa-solid fa-arrow-left"></i>
     <% end %>
-
 
     <div class="concert-image">
       <%= cl_image_tag @concert.image.key %>
@@ -13,14 +10,11 @@
 
     <div class="concert-info">
       <div class="concert-info-content">
-
-
         <div class="concert-details">
           <p class="concert-date"><%= @concert.date.strftime("%Y-%m-%d") %></p>
           <h1 class="concert-title"><%= @concert.title %></h1>
           <p class="concert-location"><%= @concert.venue %>, <%= @concert.localisation %></p>
         </div>
-
 
         <div class="concert-stats">
           <p class="content-count"><%= @concert.contents.count %> Photos & Videos</p>
@@ -30,17 +24,31 @@
   </div>
 
   <div class="concert-content-section">
-    <% @contents.each do |content| %>
-      <% if content.image.attached? %>
-        <%= cl_image_tag content.image.key %>
+
+    <div class="content-column-left">
+      <% @contents.each_with_index do |content, index| %>
+        <% if content.image.attached? && index.even? %>
+          <%= link_to concert_content_path(@concert, content) do %>
+            <%= cl_image_tag content.image.key %>
+          <% end %>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
+
+    <div class="content-column-right">
+      <% @contents.each_with_index do |content, index| %>
+        <% if content.image.attached? && index.odd? %>
+          <%= link_to concert_content_path(@concert, content) do %>
+            <%= cl_image_tag content.image.key %>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 
   <div class="add-content-button">
     <%= link_to new_concert_content_path(@concert), class: "add-button" do %>
-      <i class="fa-solid fa-image"></i>
+      <i class="fa-solid fa-image"></i> 
     <% end %>
   </div>
 </div>
-
