@@ -23,8 +23,8 @@
     </div>
   </div>
 
-  <div class="concert-content-section">
-
+  <div class="concert-contents-section">
+    <!-- Colonne gauche -->
     <div class="content-column-left">
       <% @contents.each_with_index do |content, index| %>
         <% if content.image.attached? && index.even? %>
@@ -35,6 +35,7 @@
       <% end %>
     </div>
 
+    <!-- Colonne droite -->
     <div class="content-column-right">
       <% @contents.each_with_index do |content, index| %>
         <% if content.image.attached? && index.odd? %>
@@ -48,7 +49,7 @@
 
   <div class="add-content-button">
     <%= link_to new_concert_content_path(@concert), class: "add-button" do %>
-      <i class="fa-solid fa-image"></i> 
+      <i class="fa-solid fa-image"></i>
     <% end %>
   </div>
 </div>

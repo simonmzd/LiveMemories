@@ -104,7 +104,7 @@ body {
   white-space: nowrap;
 }
 
-.concert-content-section {
+.concert-contents-section {
   margin-top: 120px;
   padding: 15px;
   padding-bottom: 80px;
@@ -121,9 +121,9 @@ body {
   gap: 10px;
 
   a {
-    display: block; 
-    text-decoration: none;
-    transition: transform 0.2s ease;
+    display: block; /* S'assure que le lien prend toute la largeur de l'image */
+    text-decoration: none; /* Supprime le soulignement par défaut du lien */
+    transition: transform 0.2s ease; /* Animation pour l'effet de survol */
 
     img {
       width: 100%;
@@ -133,9 +133,9 @@ body {
     }
 
     &:hover {
-      transform: scale(1.02);
+      transform: scale(1.02); /* Légère mise à l'échelle au survol */
       img {
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Ombre au survol */
       }
     }
   }
@@ -210,7 +210,7 @@ body {
     max-width: 60%;
   }
 
-  .concert-content-section {
+  .concert-contents-section {
     padding: 10px;
     padding-bottom: 80px;
     display: flex;
