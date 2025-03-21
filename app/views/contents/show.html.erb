@@ -1,9 +1,12 @@
 <div class="container-fluid p-0 d-flex flex-column justify-content-between vh-100">
+  <%= link_to concert_path(@concert), class: "back-button" do %>
+      <i class="fa-solid fa-arrow-left"></i>
+    <% end %>
   <h1 class="text-center my-3"><%= @content.title %></h1>
   <p class="text-center"><%= @content.description %></p>
 
 
-  <div class="image-container position-relative">
+  <div class="image-container position-relative d-flex flex-column align-items-center flex-grow-1">
     <% if @content.image.attached? %>
       <%= cl_image_tag @content.image.key, class: "content-image" %>
     <% else %>
@@ -26,8 +29,6 @@
     </div>
   </div>
 
-
-  <%= link_to "Retour", concert_path(@concert), class: "btn btn-secondary mt-3 d-block mx-auto" %>
 
 
   <div class="modal fade" id="commentModal" tabindex="-1" aria-labelledby="commentModalLabel" aria-hidden="true">
