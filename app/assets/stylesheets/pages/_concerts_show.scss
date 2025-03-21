@@ -109,16 +109,35 @@ body {
   padding: 15px;
   padding-bottom: 80px;
   display: flex;
-  flex-wrap: wrap; /* Permet aux images de se répartir sur plusieurs colonnes */
-  justify-content: space-between; /* Espace entre les colonnes */
-  gap: 15px; /* Espace entre les images */
+  justify-content: space-between;
+  gap: 10px;
+}
 
-  img {
-    width: calc(50% - 7.5px); /* Deux colonnes : 50% de la largeur moins la moitié du gap */
-    max-width: none; /* Supprime la contrainte de max-width pour s'adapter à la colonne */
-    height: auto;
-    border-radius: 10px;
-    display: block;
+.content-column-left,
+.content-column-right {
+  width: calc(50% - 5px);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  a {
+    display: block; 
+    text-decoration: none;
+    transition: transform 0.2s ease;
+
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      display: block;
+    }
+
+    &:hover {
+      transform: scale(1.02);
+      img {
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      }
+    }
   }
 }
 
@@ -126,7 +145,7 @@ body {
   position: fixed;
   top: 20px;
   left: 20px;
-  background-color: #007bff;
+  background-color: #4D0EFF;
   color: white;
   padding: 8px 12px;
   border-radius: 20px;
@@ -148,7 +167,7 @@ body {
 }
 
 .add-button {
-  background-color: #007bff;
+  background-color: #4D0EFF;
   color: white;
   padding: 10px 20px;
   border-radius: 20px;
@@ -194,13 +213,15 @@ body {
   .concert-content-section {
     padding: 10px;
     padding-bottom: 80px;
-    flex-direction: column; /* Une seule colonne sur mobile */
-    align-items: center; /* Centre les images sur mobile */
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
 
-    img {
-      width: 100%; /* Une seule colonne : 100% de la largeur */
-      max-width: 90%; /* Limite la largeur pour un peu de marge */
-    }
+  .content-column-left,
+  .content-column-right {
+    width: calc(50% - 4px);
+    gap: 8px;
   }
 
   .concert-image {
@@ -211,7 +232,7 @@ body {
   }
 
   .back-button {
-    top: 85px;
+    top: 20px;
     left: 15px;
     padding: 6px 10px;
     font-size: 0.9rem;
