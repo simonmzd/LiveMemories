@@ -1,9 +1,14 @@
 <div class="home-container">
   <main>
     <% if user_signed_in? %>
-      <h1>Hello, <%= current_user.username %> !</h1>
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1 class="mb-0">Hello, <%= current_user.username %> !</h1>
+        <%= link_to dashboard_path, class: "text-decoration-none ms-5" do %>
+          <i class="fa-solid fa-user fs-3"></i>
+        <% end %>
+      </div>
     <% else %>
-      <h1>Bienvenue !</h1>
+      <h1 class="mb-3">Bienvenue !</h1>
     <% end %>
     <div class="search-bar">
       <%= form_with url: concerts_path, method: :get, local: true, class: "search-form" do %>
@@ -12,16 +17,8 @@
       <% end %>
     </div>
     <div class="location-filter">
-      <div class="location">
-        <span>📍 <%= params[:location].presence || "Paris" %></span>
-      </div>
-      <div class="location-change">
-        <%= form_with url: concerts_path, method: :get, local: true, class: "location-form" do %>
-          <%= select_tag :location, options_for_select(["Paris", "London", "New York", "Tokyo"], params[:location].presence || "Paris"), class: "location-select" %>
-          <%= submit_tag "Changer", class: "location-submit" %>
-        <% end %>
-      </div>
-    </div>
+    <div class="location">
+  </div>
     <div class="filters">
       <%= form_with url: concerts_path, method: :get, local: true, class: "filter-form" do %>
         <%= hidden_field_tag :location, params[:location].presence || "Paris" %>
