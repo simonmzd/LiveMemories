@@ -9,6 +9,9 @@
   <div class="image-container position-relative d-flex flex-column align-items-center flex-grow-1">
     <% if @content.image.attached? %>
       <%= cl_image_tag @content.image.key, class: "content-image" %>
+      <%= link_to cl_image_path(@content.image.key, flags: "attachment"), download: "image.jpg", class: "download-button" do %>
+        <i class="fa-solid fa-cloud-arrow-down"></i>
+      <% end %>
     <% else %>
       <p class="text-center">Aucune image disponible.</p>
     <% end %>
