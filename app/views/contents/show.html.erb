@@ -1,10 +1,9 @@
 <div class="container-fluid p-0 d-flex flex-column justify-content-between vh-100">
   <%= link_to concert_path(@concert), class: "back-button" do %>
-      <i class="fa-solid fa-arrow-left"></i>
-    <% end %>
+    <i class="fa-solid fa-arrow-left"></i>
+  <% end %>
   <h1 class="text-center my-3"><%= @content.title %></h1>
   <p class="text-center"><%= @content.description %></p>
-
 
   <div class="image-container position-relative d-flex flex-column align-items-center flex-grow-1">
     <% if @content.image.attached? %>
@@ -13,40 +12,51 @@
       <p class="text-center">Aucune image disponible.</p>
     <% end %>
 
-
     <div class="overlay-buttons" data-controller="vote">
       <button data-action="click->vote#upvote" class="btn btn-lg">
-        <i class="fa-solid fa-thumbs-up" style= "color: #9bea99"></i> <span data-vote-target="upvoteCount">0</span>
+        <i class="fa-solid fa-thumbs-up" style="color: #9bea99"></i> <span data-vote-target="upvoteCount">0</span>
       </button>
 
-      <button class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#commentModal">
+      <button class="btn btn-primary btn-lg" data-bs-toggle="offcanvas" data-bs-target="#commentsOffcanvas" aria-controls="commentsOffcanvas">
         <i class="fa-solid fa-comment"></i>
+        <span class="comment-counter"><%= @content.reviews.count %></span>
       </button>
 
       <button data-action="click->vote#downvote" class="btn btn-lg">
-        <i class="fa-solid fa-thumbs-down" style= "color: #f57f7f"></i> <span data-vote-target="downvoteCount">0</span>
+        <i class="fa-solid fa-thumbs-down" style="color: #f57f7f"></i> <span data-vote-target="downvoteCount">0</span>
       </button>
     </div>
   </div>
+</div>
 
+<div class="offcanvas offcanvas-bottom" tabindex="-1" id="commentsOffcanvas" aria-labelledby="commentsOffcanvasLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="commentsOffcanvasLabel">Commentaires</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="reviews-section">
+      <% if @content.reviews.any? %>
+        <% @content.reviews.each do |review| %>
+          <div class="review mb-3 p-3 border rounded">
+            <p><strong><%= review.user.username %></strong> a écrit :</p>
+            <p><%= review.comment %></p>
+            <small>Posté le <%= review.created_at.strftime("%d/%m/%Y à %H:%M") %></small>
+          </div>
+        <% end %>
+      <% else %>
+        <p>Aucun commentaire pour le moment. Soyez le premier à commenter !</p>
+      <% end %>
+    </div>
 
-
-  <div class="modal fade" id="commentModal" tabindex="-1" aria-labelledby="commentModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="commentModalLabel">Ajouter un commentaire</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <div class="add-comment-section mt-4">
+      <%= form_with(model: [@concert, @content, Review.new], url: concert_content_reviews_path(@concert, @content), local: true) do |form| %>
+        <div class="mb-3">
+          <%= form.label :comment, "Votre commentaire", class: "form-label" %>
+          <%= form.text_area :comment, class: "form-control", placeholder: "Écrivez votre commentaire...", rows: 3 %>
         </div>
-        <div class="modal-body">
-          <%= form_with(model: [@concert, @content], url: concert_content_comments_path(@concert, @content), local: true) do |form| %>
-            <div class="mb-3">
-              <%= form.text_area :comment, class: "form-control", placeholder: "Écrivez votre commentaire..." %>
-            </div>
-            <%= form.submit "Envoyer", class: "btn btn-primary" %>
-          <% end %>
-        </div>
-      </div>
+        <%= form.submit "Envoyer", class: "btn btn-primary" %>
+      <% end %>
     </div>
   </div>
 </div>
