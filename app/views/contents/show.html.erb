@@ -2,6 +2,7 @@
   <%= link_to concert_path(@concert), class: "back-button" do %>
     <i class="fa-solid fa-arrow-left"></i>
   <% end %>
+
   <h1 class="text-center my-3"><%= @content.title %></h1>
   <p class="text-center"><%= @content.description %></p>
 
@@ -12,9 +13,12 @@
       <p class="text-center">Aucune image disponible.</p>
     <% end %>
 
-    <div class="overlay-buttons" data-controller="vote">
-      <button data-action="click->vote#upvote" class="btn btn-lg">
-        <i class="fa-solid fa-thumbs-up" style="color: #9bea99"></i> <span data-vote-target="upvoteCount">0</span>
+    <div class="overlay-buttons" data-controller="vote" data-content-id="<%= @content.id %>">
+      <button data-action="click->vote#upvote"
+              data-vote-target="upvoteButton"
+              class="btn btn-lg <%= 'active' if current_user&.voted?(@content, 1) %>">
+        <i class="fa-solid fa-thumbs-up" style="color: #9bea99"></i>
+        <span data-vote-target="upvoteCount"><%= @content.upvotes_count %>0</span>
       </button>
 
       <button class="btn btn-primary btn-lg" data-bs-toggle="offcanvas" data-bs-target="#commentsOffcanvas" aria-controls="commentsOffcanvas">
@@ -22,8 +26,11 @@
         <span class="comment-counter"><%= @content.reviews.count %></span>
       </button>
 
-      <button data-action="click->vote#downvote" class="btn btn-lg">
-        <i class="fa-solid fa-thumbs-down" style="color: #f57f7f"></i> <span data-vote-target="downvoteCount">0</span>
+      <button data-action="click->vote#downvote"
+              data-vote-target="downvoteButton"
+              class="btn btn-lg <%= 'active' if current_user&.voted?(@content, -1) %>">
+        <i class="fa-solid fa-thumbs-down" style="color: #f57f7f"></i>
+        <span data-vote-target="downvoteCount"><%= @content.downvotes_count %>0</span>
       </button>
     </div>
   </div>

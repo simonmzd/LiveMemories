@@ -43,7 +43,7 @@ class ConcertsController < ApplicationController
   end
 
   def show
-    @contents = @concert.contents
+    @contents = @concert.contents.includes(:votes).sort_by { |content| -content.upvotes_count }
   end
 
   def new
@@ -82,6 +82,6 @@ class ConcertsController < ApplicationController
   end
 
   def concert_params
-    params.require(:concert).permit(:title, :date, :localisation, :description, :genre, :public, :venue, :image, :user_id)
+    params.require(:concert).permit(:title, :date, :localisation, :description, :genre, :public, :venue, :image, :user_id,)
   end
 end

@@ -9,4 +9,5 @@ class Concert < ApplicationRecord
   validates :public, presence: true
   validates :venue, presence: true
   has_one_attached :image
+  has_one_attached :video
 end

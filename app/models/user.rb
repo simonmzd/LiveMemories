@@ -9,4 +9,9 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  def voted?(content, value)
+    vote = content.votes.find_by(user: self)
+    vote && vote.value == value
+  end
 end
