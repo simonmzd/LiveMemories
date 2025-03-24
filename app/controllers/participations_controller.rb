@@ -1,9 +1,9 @@
 class ParticipationsController < ApplicationController
-  before_action :authenticate_user! # Vérifie que l'utilisateur est connecté
+  before_action :authenticate_user!
 
   def create
-    @concert = Concert.find(params[:concert_id]) # Trouve le concert
-    @participation = Participation.new(concert: @concert, user: current_user) # Crée une participation
+    @concert = Concert.find(params[:concert_id])
+    @participation = Participation.new(concert: @concert, user: current_user)
     if @participation.save
       redirect_to @concert, notice: "Tu participes maintenant à ce concert !"
     else
@@ -12,8 +12,8 @@ class ParticipationsController < ApplicationController
   end
 
   def destroy
-    @concert = Concert.find(params[:concert_id]) # Trouve le concert
-    @participation = Participation.find_by(concert: @concert, user: current_user) # Trouve la participation
+    @concert = Concert.find(params[:concert_id])
+    @participation = Participation.find_by(concert: @concert, user: current_user)
     if @participation&.destroy
       redirect_to @concert, notice: "Tu ne participes plus à ce concert."
     else
