@@ -37,28 +37,6 @@
   color: white;
 }
 
-.add-content-button {
-  position: fixed;
-  bottom: 20px;
-  left: 0;
-  right: 0;
-  text-align: center;
-}
-
-.add-button {
-  background-color: #007bff;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 20px;
-  text-decoration: none;
-  font-size: 0.9rem;
-}
-
-.add-button i {
-  color: white;
-  margin-right: 5px;
-  font-size: 1rem;
-}
 
 @media (max-width: 576px) {
   .concert-info {
@@ -112,20 +90,6 @@
     top: 85px;
     left: 15px;
     padding: 6px 10px;
-    font-size: 0.9rem;
-  }
-
-  .add-content-button {
-    bottom: 15px;
-  }
-
-  .add-button {
-    padding: 8px 16px;
-    font-size: 0.8rem;
-  }
-
-  .add-button i {
-    margin-right: 4px;
     font-size: 0.9rem;
   }
 }
