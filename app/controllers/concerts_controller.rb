@@ -43,7 +43,7 @@ class ConcertsController < ApplicationController
   end
 
   def show
-    @contents = @concert.contents
+    @contents = @concert.contents.includes(:votes).sort_by { |content| -content.upvotes_count }
   end
 
   def new
