@@ -67,7 +67,7 @@
       <%= link_to new_concert_path do %>
         <i class="fa-solid fa-plus add_concert_btn"></i>
       <% end %>
-      <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, class: "link" %>
+      <%= link_to "Déconnexion", destroy_user_session_path, data: { turbo_method: :delete }, class: "link" %>
     <% else %>
       <%= link_to "Retour", root_path, class: "link" %>
     <% end %>
