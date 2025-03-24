@@ -1,15 +1,13 @@
-// Variables globales pour les couleurs et les tailles
-$primary-color: #4f46e5; // Violet pour les boutons
-$secondary-color: #6b7280; // Gris pour le texte secondaire
-$text-color: #1f2937; // Noir/gris foncé pour le texte principal
-$background-color: #ffffff; // Blanc pour les fonds
-$border-color: #e5e7eb; // Gris clair pour les bordures
+$primary-color: #4f46e5;
+$secondary-color: #6b7280;
+$text-color: #1f2937;
+$background-color: #ffffff;
+$border-color: #e5e7eb;
 $shadow-color: rgba(0, 0, 0, 0.1);
 $border-radius: 10px;
 $padding-base: 12px;
 $gap-base: 10px;
 
-// Mixins pour réutiliser les styles
 @mixin flex-center($direction: row, $justify: center, $align: center) {
   display: flex;
   flex-direction: $direction;

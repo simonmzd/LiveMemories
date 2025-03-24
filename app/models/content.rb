@@ -4,8 +4,8 @@ class Content < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :votes, dependent: :destroy
   has_many :users, through: :votes
-  validates :image, presence: true
   validates :title, presence: true
+  has_one_attached :video
   has_one_attached :image
 
   def upvotes_count
