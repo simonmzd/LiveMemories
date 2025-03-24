@@ -11,7 +11,19 @@
     <div class="concert-info">
       <div class="concert-info-content">
         <div class="concert-details">
-          <p class="concert-date"><%= @concert.date.strftime("%d/%m/%Y") %></p>
+          <p class="concert-date">
+            <%= @concert.date.strftime("%d/%m/%Y") %>
+            <!-- Bouton Participer déplacé ici -->
+            <% if user_signed_in? %>
+              <% if current_user.attended_concerts.include?(@concert) %>
+                <%= link_to "Je n'y suis pas allé 🙁", concert_participation_path(@concert),
+                            data: { turbo_method: :delete }, class: "participate-button btn-unparticipate" %>
+              <% else %>
+                <%= link_to "J'y suis allé 🙂", concert_participations_path(@concert),
+                            data: { turbo_method: :post }, class: "participate-button btn-participate" %>
+              <% end %>
+            <% end %>
+          </p>
           <h1 class="concert-title"><%= @concert.title %></h1>
           <p class="concert-location"><%= @concert.venue %>, <%= @concert.localisation %></p>
         </div>
