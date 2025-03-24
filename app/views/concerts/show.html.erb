@@ -13,7 +13,7 @@
         <div class="concert-details">
           <p class="concert-date">
             <%= @concert.date.strftime("%d/%m/%Y") %>
-            <!-- Bouton Participer déplacé ici -->
+
             <% if user_signed_in? %>
               <% if current_user.attended_concerts.include?(@concert) %>
                 <%= link_to "Je n'y suis pas allé 🙁", concert_participation_path(@concert),

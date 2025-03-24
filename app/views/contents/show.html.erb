@@ -18,7 +18,7 @@
               data-vote-target="upvoteButton"
               class="btn btn-lg <%= 'active' if current_user&.voted?(@content, 1) %>">
         <i class="fa-solid fa-thumbs-up" style="color: #9bea99"></i>
-        <span data-vote-target="upvoteCount"><%= @content.upvotes_count %>0</span>
+        <span data-vote-target="upvoteCount"><%= @content.upvotes_count %></span>
       </button>
 
       <button class="btn btn-primary btn-lg" data-bs-toggle="offcanvas" data-bs-target="#commentsOffcanvas" aria-controls="commentsOffcanvas">
@@ -30,7 +30,7 @@
               data-vote-target="downvoteButton"
               class="btn btn-lg <%= 'active' if current_user&.voted?(@content, -1) %>">
         <i class="fa-solid fa-thumbs-down" style="color: #f57f7f"></i>
-        <span data-vote-target="downvoteCount"><%= @content.downvotes_count %>0</span>
+        <span data-vote-target="downvoteCount"><%= @content.downvotes_count %></span>
       </button>
     </div>
   </div>

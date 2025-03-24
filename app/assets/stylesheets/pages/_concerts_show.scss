@@ -186,21 +186,9 @@ body {
   justify-content: center;
 }
 .participate-button {
-  background-color: #4D0EFF; /* Même couleur que back-button */
+  background-color: #4D0EFF; 
   color: white;
-  padding: 4px 8px; /* Réduit par rapport à 8px 12px */
-  border-radius: 20px; /* Garde le style arrondi */
-  text-decoration: none;
-  font-size: 0.7rem; /* Réduit par rapport à 1rem */
-  display: inline-block;
-  margin-left: 8px; /* Petite marge pour séparer de la date */
-  vertical-align: middle; /* Aligne le bouton avec le texte de la date */
-}
-
-.btn-unparticipate {
-  background-color: #ff4444; /* Rouge pour "Ne plus participer" */
-  color: white;
-  padding: 4px 8px; /* Même taille réduite */
+  padding: 4px 8px;
   border-radius: 20px;
   text-decoration: none;
   font-size: 0.7rem;
@@ -209,11 +197,23 @@ body {
   vertical-align: middle;
 }
 
-/* Ajustement pour la date, pour s'assurer qu'elle reste alignée */
+.btn-unparticipate {
+  background-color: #ff4444;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 0.7rem;
+  display: inline-block;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+
 .concert-date {
   display: flex;
-  align-items: center; /* Centre verticalement la date et le bouton */
-  font-size: 0.6rem; /* Taille existante */
+  align-items: center;
+  font-size: 0.6rem;
   color: #6c757d;
   margin: 0 0 5px 0;
   line-height: 1;
