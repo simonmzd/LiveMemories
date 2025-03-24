@@ -28,15 +28,16 @@ body {
   padding: 0;
   box-sizing: border-box;
 
+
   img {
     height: 40vh;
     width: 100%;
     max-width: 100%;
     object-fit: cover;
     display: block;
-    padding: 10px;
     box-sizing: border-box;
-    border-radius: 15px;
+    padding: 8px;
+    border-radius: 12px;
   }
 }
 
@@ -45,6 +46,7 @@ body {
   bottom: -70px;
   left: 10px;
   right: 10px;
+  padding: 15px;
   min-height: 140px;
   background-color: #fff;
   border-radius: 10px;
@@ -65,11 +67,11 @@ body {
 
 .concert-details {
   flex: 1;
-  max-width: 65%;
+  max-width: 60%;
 }
 
 .concert-date {
-  font-size: 0.6rem;
+  font-size: 0.55rem;
   color: #6c757d;
   margin: 0 0 5px 0;
   line-height: 1;
@@ -106,24 +108,24 @@ body {
 
 .concert-contents-section {
   margin-top: 120px;
-  padding: 15px;
+  padding: 10px;
   padding-bottom: 80px;
   display: flex;
   justify-content: space-between;
-  gap: 10px;
+  gap: 8px;
 }
 
 .content-column-left,
 .content-column-right {
-  width: calc(50% - 5px);
+  width: calc(50% - 4px);
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
 
   a {
-    display: block; /* S'assure que le lien prend toute la largeur de l'image */
-    text-decoration: none; /* Supprime le soulignement par défaut du lien */
-    transition: transform 0.2s ease; /* Animation pour l'effet de survol */
+    display: block;
+    text-decoration: none;
+    transition: transform 0.2s ease;
 
     img {
       width: 100%;
@@ -133,9 +135,9 @@ body {
     }
 
     &:hover {
-      transform: scale(1.02); /* Légère mise à l'échelle au survol */
+      transform: scale(1.02);
       img {
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Ombre au survol */
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
       }
     }
   }
@@ -143,15 +145,15 @@ body {
 
 .back-button {
   position: fixed;
-  top: 20px;
-  left: 20px;
   background-color: #4D0EFF;
   color: white;
-  padding: 8px 12px;
   border-radius: 20px;
   text-decoration: none;
-  font-size: 1rem;
   z-index: 10;
+  top: 20px;
+  left: 15px;
+  padding: 6px 10px;
+  font-size: 0.9rem;
 }
 
 .back-button i {
@@ -160,95 +162,26 @@ body {
 
 .add-content-button {
   position: fixed;
-  bottom: 20px;
   left: 0;
   right: 0;
   text-align: center;
+  bottom: 30px;
 }
 
 .add-button {
   background-color: #4D0EFF;
   color: white;
-  padding: 10px 20px;
-  border-radius: 20px;
+  border-radius: 25px;
   text-decoration: none;
-  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 30px;
+  font-size: 0.8rem;
 }
 
 .add-button i {
   color: white;
-  margin-right: 5px;
-  font-size: 1rem;
-}
-
-@media (max-width: 576px) {
-  .concert-info {
-    left: 10px;
-    right: 10px;
-    padding: 15px;
-    min-height: 140px;
-    bottom: -70px;
-  }
-
-  .concert-date {
-    font-size: 0.55rem;
-  }
-
-  .concert-title {
-    font-size: 1rem;
-  }
-
-  .concert-location {
-    font-size: 0.65rem;
-  }
-
-  .content-count {
-    font-size: 0.65rem;
-  }
-
-  .concert-details {
-    max-width: 60%;
-  }
-
-  .concert-contents-section {
-    padding: 10px;
-    padding-bottom: 80px;
-    display: flex;
-    justify-content: space-between;
-    gap: 8px;
-  }
-
-  .content-column-left,
-  .content-column-right {
-    width: calc(50% - 4px);
-    gap: 8px;
-  }
-
-  .concert-image {
-    img {
-      padding: 8px;
-      border-radius: 12px;
-    }
-  }
-
-  .back-button {
-    top: 20px;
-    left: 15px;
-    padding: 6px 10px;
-    font-size: 0.9rem;
-  }
-
-  .add-content-button {
-    bottom: 15px;
-  }
-
-  .add-button {
-    padding: 8px 16px;
-    font-size: 0.8rem;
-  }
-
-  .add-button i {
-    margin-right: 4px;
-    font-size: 0.9rem;
-  }
+  font-size: 1.3rem;
+  justify-content: center;
 }
