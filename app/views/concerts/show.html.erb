@@ -23,6 +23,7 @@
     </div>
   </div>
 
+
   <div class="concert-contents-section">
     <div class="content-column-left">
       <% @contents.each_with_index do |content, index| %>
@@ -44,6 +45,16 @@
       <% end %>
     </div>
   </div>
+
+  <% @concert.contents.each do |content| %>
+    <div class="media-item">
+      <% if content.video.attached? %>
+        <%= cl_video_tag(content.video.key, width: 300, height: 200, controls: true, class: "media-video", fallback_content: "Votre navigateur ne supporte pas la lecture de vidéos.") %>
+      <% else %>
+        <%= video_tag "Beyoncé.jpg", class: "card-image", width: 300, height: 225, alt: "Image par défaut pour le contenu" %>
+      <% end %>
+    </div>
+  <% end %>
 
   <div class="add-content-button">
     <%= link_to new_concert_content_path(@concert), class: "add-button" do %>
