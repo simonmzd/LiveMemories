@@ -1,8 +1,14 @@
-<h1>Ajouter du contenu</h1>
-
-<%= simple_form_for [@concert, @content] do |f| %>
-  <%= f.input :title %>
-  <%= f.input :description %>
-  <%= f.input :image, as: :file %>
-  <%= f.submit "Ajouter" %>
-<% end %>
+<div class="container">
+  <%= link_to concerts_path, class: "back-button" do %>
+    <i class="fa-solid fa-arrow-left"></i>
+  <% end %>
+  <div class="mt-5 pt-4">
+    <h1 style="color: white">Ajouter du contenu</h1>
+      <%= simple_form_for [@concert, @content] do |f| %>
+      <%= f.input :title, label: "Titre" %>
+      <%= f.input :description, label: "Mots-clés" %>
+      <%= f.input :image, as: :file, label: "Image de l'événement" %>
+      <%= f.submit "Ajouter", class: "form_btn" %>
+    <% end %>
+  </div>
+</div>
