@@ -76,37 +76,33 @@ $gap-base: 10px;
 }
 
 .search-bar {
-  margin-bottom: 20px;
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 20px auto;
 
   .search-form {
     position: relative;
-    @include flex-center(row, center, center);
+    display: flex;
+    align-items: center;
   }
 
-  .search-input {
-    @include input-style;
-    width: 100%;
-    padding-right: 40px;
-    box-shadow: 0 2px 8px $shadow-color;
 
-    &::placeholder {
-      color: $secondary-color;
-      font-style: italic;
-    }
-  }
 
-  .clear-search {
-    position: absolute;
-    right: 10px;
-    background: none;
+
+
+  .search-submit {
+    padding: 10px 15px;
+    font-size: 1rem;
+    color: white;
+    background-color: #4D0EFF;
     border: none;
-    font-size: 16px;
-    color: $primary-color;
+    border-radius: 0 20px 20px 0;
     cursor: pointer;
-    transition: color 0.3s ease;
+    transition: background-color 0.3s ease;
 
     &:hover {
-      color: darken($primary-color, 10%);
+      background-color: #3b0bcc;
     }
   }
 }

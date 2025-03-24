@@ -10,12 +10,15 @@
     <% else %>
       <h1 class="mb-3">Bienvenue !</h1>
     <% end %>
+
     <div class="search-bar">
-      <%= form_with url: concerts_path, method: :get, local: true, class: "search-form" do %>
-        <%= text_field_tag :search, params[:search], placeholder: "Concert, artiste, lieu, style, date", class: "search-input" %>
-        <%= button_tag "✖", type: "reset", class: "clear-search" %>
+      <%= form_with url: concerts_path, method: :get, local: true, class: "search-form", id: "search-form" do %>
+        <%= text_field_tag :search, params[:search], placeholder: "Concert, artiste, lieu, style, date", class: "search-input", id: "search-input" %>
+        <%= button_tag "✖", type: "button", class: "clear-search", id: "clear-search" %>
       <% end %>
     </div>
+
+
     <div class="location-filter">
     <div class="location">
   </div>
