@@ -1,15 +1,23 @@
 <div class="home-container">
   <main>
+  <div class="d-flex justify-content-between align-items-center w-100 mb-3">
     <% if user_signed_in? %>
-      <div class="d-flex justify-content-between align-items-center mb-3">
-        <h1 class="mb-0 me-5">Hello, <%= current_user.username %> !</h1>
-        <%= link_to dashboard_path, class: "text-decoration-none ms-5" do %>
-          <i class="fa-solid fa-user fs-3" style="color: #4D0EFF"></i>
+        <h1 class="mb-0">Hello, <%= current_user.username %> !</h1>
+        <%= link_to dashboard_path do %>
+          <% if current_user.avatar.attached? %>
+            <%= cl_image_tag current_user.avatar.key, class: "avatar ms-3" %>
+          <% elsif ["avatar1.JPG", "avatar2.JPG", "avatar3.JPG", "avatar4.JPG", "avatar5.JPG"].include?(current_user.avatar) %>
+            <%= image_tag asset_path("avatars/#{current_user.avatar}"), class: "avatar ms-3" %>
+          <% else %>
+            <div class="avatar-letter ms-3">
+              <%= current_user.username[0] %>
+            </div>
+          <% end %>
         <% end %>
-      </div>
     <% else %>
       <h1 class="mb-3">Bienvenue !</h1>
     <% end %>
+  </div>
 
     <div class="search-bar">
       <%= form_with url: concerts_path, method: :get, local: true, class: "search-form", id: "search-form" do %>
@@ -23,11 +31,11 @@
     <div class="location">
   </div>
     <div class="filters">
-      <%= form_with url: concerts_path, method: :get, local: true, class: "filter-form" do %>
+      <%= form_with url: concerts_path, method: :get, local: true, class: "filter-form d-flex align-items-center justify-content-between gap-2" do %>
         <%= hidden_field_tag :location, params[:location].presence || "Paris" %>
-        <%= select_tag :style, options_for_select(["Tous", "Indie Rock", "Pop", "Electro", "Rock"], params[:style].presence || "Tous"), class: "filter-select" %>
-        <%= select_tag :date_range, options_for_select(["Tous", "Cette semaine", "Ce mois", "Prochain mois"], params[:date_range].presence || "Tous"), class: "filter-select" %>
-        <%= submit_tag "Filtrer", class: "filter-submit" %>
+          <%= select_tag :style, options_for_select(["Tous", "Indie Rock", "Pop", "Electro", "Rock"], params[:style].presence || "Tous"), class: "filter-select" %>
+          <%= select_tag :date_range, options_for_select(["Tous", "Cette semaine", "Ce mois", "Prochain mois"], params[:date_range].presence || "Tous"), class: "filter-select" %>
+          <%= submit_tag "Filtrer", class: "filter-submit" %>
       <% end %>
     </div>
     <section class="upcoming-events">
@@ -54,9 +62,8 @@
                     <span class="style">🎵 <%= concert.genre %></span>
                     <span class="venue">🏟 <%= concert.venue %></span>
                   </p>
-                  <p class="description"><%= concert.description %></p>
-                  <p class="location">📍 <%= concert.localisation %></p>
-                  <p class="public">👥 <%= concert.public %> personnes attendues</p>
+                  <p class="description" style="text-align: justify"><%= concert.description %></p>
+                  <p class="location">📍 <%= concert.localisation %> 👥 <%= concert.public %></p>
                 </div>
               </div>
             <% end %>
@@ -74,5 +81,6 @@
     <% else %>
       <%= link_to "Retour", root_path, class: "link" %>
     <% end %>
+    </div>
   </main>
 </div>
