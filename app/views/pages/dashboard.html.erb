@@ -61,6 +61,8 @@
           <%= link_to concert_content_path(content.concert, content), class: "card-link" do %>
             <% if content.image.attached? %>
               <%= cl_image_tag content.image.key, class: "card-image", width: 300, height: 225, crop: :fill %>
+            <% elsif content.video.attached? %>
+              <%= cl_video_tag content.video.key, class: "card-image", width: 300, height: 225, crop: :fill %>
             <% else %>
               <%= image_tag "Beyoncé.jpg", class: "card-image", width: 300, height: 225, alt: "Image par défaut pour le contenu" %>
             <% end %>
