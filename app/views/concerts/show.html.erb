@@ -29,44 +29,61 @@
         </div>
 
         <div class="concert-stats">
-          <p class="content-count"><%= @concert.contents.count %> Photos & Videos</p>
+          <p class="content-count"><%= @concert.contents.count %> Photos & Vidéos</p>
         </div>
       </div>
     </div>
   </div>
 
-
   <div class="concert-contents-section">
     <div class="content-column-left">
       <% @contents.each_with_index do |content, index| %>
-        <% if content.image.attached? && index.even? %>
-          <%= link_to concert_content_path(@concert, content) do %>
-            <%= cl_image_tag content.image.key %>
+        <div class="media-item">
+          <% if index.even? %>
+            <% if content.image.attached? %>
+              <%= link_to concert_content_path(@concert, content) do %>
+                <%= cl_image_tag content.image.key, class: "small-media" %>
+              <% end %>
+            <% elsif content.video.attached? %>
+              <%= link_to concert_content_path(@concert, content) do %>
+                <div class="video-wrapper">
+                  <video autoplay loop muted class="small-media">
+                    <source src="<%= cl_video_path(content.video.key) %>" type="video/mp4">
+                    Votre navigateur ne supporte pas la lecture de vidéos.
+                  </video>
+                  <!-- Suppression de l'icône de lecture -->
+                </div>
+              <% end %>
+            <% end %>
           <% end %>
-        <% end %>
+        </div>
       <% end %>
     </div>
 
     <div class="content-column-right">
       <% @contents.each_with_index do |content, index| %>
-        <% if content.image.attached? && index.odd? %>
-          <%= link_to concert_content_path(@concert, content) do %>
-            <%= cl_image_tag content.image.key %>
+        <div class="media-item">
+          <% if index.odd? %>
+            <% if content.image.attached? %>
+              <%= link_to concert_content_path(@concert, content) do %>
+                <%= cl_image_tag content.image.key, class: "small-media" %>
+              <% end %>
+            <% elsif content.video.attached? %>
+              <%= link_to concert_content_path(@concert, content) do %>
+                <div class="video-wrapper">
+                  <video autoplay loop muted class="small-media">
+                    <source src="<%= cl_video_path(content.video.key) %>" type="video/mp4">
+                    Votre navigateur ne supporte pas la lecture de vidéos.
+                  </video>
+                  <!-- Suppression de l'icône de lecture -->
+                </div>
+              <% end %>
+            <% end %>
           <% end %>
-        <% end %>
+        </div>
       <% end %>
     </div>
   </div>
-
-  <% @concert.contents.each do |content| %>
-    <div class="media-item">
-      <% if content.video.attached? %>
-        <%= cl_video_tag(content.video.key, width: 300, height: 200, controls: true, class: "media-video", fallback_content: "Votre navigateur ne supporte pas la lecture de vidéos.") %>
-      <% else %>
-        <%= video_tag "Beyoncé.jpg", class: "card-image", width: 300, height: 225, alt: "Image par défaut pour le contenu" %>
-      <% end %>
-    </div>
-  <% end %>
 
   <div class="add-content-button">
     <%= link_to new_concert_content_path(@concert), class: "add-button" do %>

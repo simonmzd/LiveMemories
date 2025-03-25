@@ -19,6 +19,15 @@
   display: block;
 }
 
+.content-video {
+  width: 100vw;
+  height: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+  object-fit: contain;
+  display: block;
+}
+
 .overlay-buttons {
   position: absolute;
   bottom: 10px;

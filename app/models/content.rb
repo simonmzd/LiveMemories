@@ -12,6 +12,7 @@ class Content < ApplicationRecord
     votes.where(value: 1).count
   end
 
+
   def downvotes_count
     votes.where(value: -1).count
   end

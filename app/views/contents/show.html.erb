@@ -12,8 +12,16 @@
       <%= link_to cl_image_path(@content.image.key, flags: "attachment"), download: "image.jpg", class: "download-button" do %>
         <i class="fa-solid fa-cloud-arrow-down"></i>
       <% end %>
+    <% elsif @content.video.attached? %>
+      <video controls class="content-video">
+        <source src="<%= cl_video_path(@content.video.key) %>" type="video/mp4">
+        Votre navigateur ne supporte pas la lecture de vidéos.
+      </video>
+      <%= link_to cl_video_path(@content.video.key, flags: "attachment"), download: "video.mp4", class: "download-button" do %>
+        <i class="fa-solid fa-cloud-arrow-down"></i>
+      <% end %>
     <% else %>
-      <p class="text-center">Aucune image disponible.</p>
+      <p class="text-center">Aucune image ou vidéo disponible.</p>
     <% end %>
 
     <div class="overlay-buttons" data-controller="vote" data-content-id="<%= @content.id %>">
