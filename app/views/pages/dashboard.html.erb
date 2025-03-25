@@ -3,8 +3,21 @@
 <% end %>
 <div class="dashboard pt-5 mt-4">
   <div class="user-profile">
+    <div class="avatar-container">
+      <%= link_to edit_user_registration_path do %>
+        <% if current_user.avatar.attached? %>
+          <%= cl_image_tag current_user.avatar.key, width: 150, height: 150, crop: :fill, class: "avatar-dash ms-3" %>
+        <% elsif ["avatar1.JPG", "avatar2.JPG", "avatar3.JPG", "avatar4.JPG", "avatar5.JPG"].include?(current_user.avatar) %>
+          <%= image_tag asset_path("avatars/#{current_user.avatar}"), class: "avatar-dash ms-3" %>
+        <% else %>
+          <div class="avatar-letter ms-3">
+            <%= current_user.username[0] %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
     <div class="user-info">
-      <h2 class="user-name"><%= current_user.username || "Utilisateur" %></h2>
+      <h2 class="user-name"><%= current_user.username.capitalize || "Utilisateur" %></h2>
       <div class="user-stats">
         <span class="stat"><%= current_user.attended_concerts.count %> Participation </span>
         <span class="stat"><%= @my_concerts.count %> Concerts</span>
