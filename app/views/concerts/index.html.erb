@@ -5,7 +5,7 @@
         <h1 class="mb-0">Hello, <%= current_user.username %> !</h1>
         <%= link_to dashboard_path do %>
           <% if current_user.avatar.attached? %>
-            <%= cl_image_tag current_user.avatar.key, class: "avatar ms-3" %>
+            <%= cl_image_tag current_user.avatar.key, width: 150, height: 150, crop: :fill, class: "avatar ms-3" %>
           <% elsif ["avatar1.JPG", "avatar2.JPG", "avatar3.JPG", "avatar4.JPG", "avatar5.JPG"].include?(current_user.avatar) %>
             <%= image_tag asset_path("avatars/#{current_user.avatar}"), class: "avatar ms-3" %>
           <% else %>
@@ -63,7 +63,7 @@
                     <span class="venue">🏟 <%= concert.venue %></span>
                   </p>
                   <p class="description" style="text-align: justify"><%= concert.description %></p>
-                  <p class="location">📍 <%= concert.localisation %> 👥 <%= concert.public %></p>
+                  <p class="location" style="font-size: 12px">📍 <%= concert.localisation %> 👥 <%= concert.public %></p>
                 </div>
               </div>
             <% end %>
