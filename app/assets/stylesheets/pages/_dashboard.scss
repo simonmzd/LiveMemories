@@ -24,20 +24,27 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 1fr); 
   gap: 15px;
 }
 
 .card {
   background: #1a1a1a;
   border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(255,255,255,0.1);
+  box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
   overflow: hidden;
   transition: transform 0.2s;
 
   &:hover {
     transform: translateY(-5px);
   }
+}
+
+.card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  width: 100%;
 }
 
 .card-image {
@@ -57,7 +64,8 @@
   margin-bottom: 5px;
 }
 
-.card-date, .card-description {
+.card-date,
+.card-description {
   font-size: 12px;
   color: #cccccc;
   margin-bottom: 5px;
@@ -80,6 +88,7 @@
     color: #e0e0e0;
   }
 }
+
 .back-button {
   position: fixed;
   top: 20px;
@@ -92,6 +101,41 @@
   font-size: 1rem;
   z-index: 10;
 }
+
 .back-button i {
   color: white;
+}
+
+.user-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background: #ffffff;
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 30px;
+  width: 100%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.user-info {
+  width: 100%;
+}
+
+.user-name {
+  font-size: 24px;
+  font-weight: bold;
+  color: #1f2937;
+  margin-bottom: 5px;
+}
+
+.user-stats {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+.stat {
+  font-size: 14px;
+  color: #6b7280;
 }
