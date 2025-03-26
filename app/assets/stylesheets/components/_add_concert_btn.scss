@@ -9,3 +9,19 @@
   font-size: 2rem;
   z-index: 10;
 }
+
+.add_concert_btn_dash {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #4D0EFF;
+  color: white;
+  text-decoration: none;
+  font-size: 0.9rem;
+  line-height: 1;
+  position: relative;
+  top: -15px;
+}
