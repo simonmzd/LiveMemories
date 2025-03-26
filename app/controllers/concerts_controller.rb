@@ -37,7 +37,7 @@ class ConcertsController < ApplicationController
       end
     end
 
-    @concerts = @concerts.order(date: :asc)
+    @concerts = @concerts.order(date: :desc)
 
     puts "Concerts: #{@concerts.count}"
   end

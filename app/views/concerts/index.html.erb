@@ -43,9 +43,9 @@
         <% @concerts.each do |concert| %>
           <div class="event-row">
             <div class="event-date">
-              <span class="weekday"><%= jour_en_francais(concert.date) %></span>
               <span class="day"><%= concert.date.day %></span>
               <span class="month"><%= mois_en_francais(concert.date) %></span>
+              <span class="year"><%= concert.date.year %></span>
             </div>
             <%= link_to concert_path(concert), class: "event-card-link" do %>
               <div class="event-card">

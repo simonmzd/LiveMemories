@@ -10,7 +10,7 @@
         <% elsif ["avatar1.JPG", "avatar2.JPG", "avatar3.JPG", "avatar4.JPG", "avatar5.JPG"].include?(current_user.avatar) %>
           <%= image_tag asset_path("avatars/#{current_user.avatar}"), class: "avatar-dash ms-3" %>
         <% else %>
-          <div class="avatar-letter ms-3">
+          <div class="avatar-letter-dash ms-3">
             <%= current_user.username[0] %>
           </div>
         <% end %>
@@ -46,7 +46,12 @@
   <% end %>
 
   <div class="section">
-    <h2 class="section-title">Concerts</h2>
+    <div class="d-flex justify-content-start align-items-center">
+      <h2 class="section-title me-3">Concerts</h2>
+      <%= link_to new_concert_path, class: "add_concert_btn_dash" do %>
+          <i class="fa-solid fa-plus"></i>
+        <% end %>
+    </div>
     <div class="grid">
       <% @my_concerts.each do |concert| %>
         <div class="card">
