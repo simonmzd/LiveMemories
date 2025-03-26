@@ -26,4 +26,8 @@ class ApplicationController < ActionController::Base
   def root_path?
     request.path == root_path
   end
+
+  def default_url_options
+    { host: ENV[“DOMAIN”] || “localhost:3000” }
+  end
 end
