@@ -5,9 +5,9 @@ class ParticipationsController < ApplicationController
     @concert = Concert.find(params[:concert_id])
     @participation = Participation.new(concert: @concert, user: current_user)
     if @participation.save
-      redirect_to @concert, notice: "Tu participes maintenant à ce concert !"
+      redirect_to concert_path(@concert), notice: "Tu participes maintenant à ce concert !"
     else
-      redirect_to @concert, alert: "Erreur, impossible de participer."
+      redirect_to concert_path(@concert), alert: "Erreur, impossible de participer."
     end
   end
 
