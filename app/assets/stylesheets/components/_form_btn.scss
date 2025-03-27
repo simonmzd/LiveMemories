@@ -1,7 +1,8 @@
 .form_btn {
   position: fixed;
-  bottom: 30px;
-  left: 20px;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
   background-color: #4D0EFF;
   color: white;
   padding: 8px 12px;
