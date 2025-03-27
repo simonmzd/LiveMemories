@@ -9,9 +9,16 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  def create
+     super
+       rescue ActionController::Redirecting::UnsafeRedirectError
+         # you can probably omit the status bit
+         # if you're not part of the turbo team.
+        redirect_to(after_sign_in_path_for(resource),
+          allow_other_host: true,
+          # status:           :see_other
+        )
+  end
 
   # DELETE /resource/sign_out
   # def destroy
