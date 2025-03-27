@@ -3,7 +3,7 @@
     <i class="fa-solid fa-arrow-left"></i>
   <% end %>
   <div class="mt-5 pt-4">
-    <h1 style="color: white">Modofier le concert</h1>
+    <h1 style="color: white">Modifier le concert</h1>
       <%= simple_form_for [@concert] do |f| %>
       <%= f.input :title, label: "Titre du concert", class: "form-control rounded-3 d-inline-block" %>
       <%= f.input :description, label: "Description", class: "form-control rounded-3 d-inline-block" %>
@@ -28,7 +28,7 @@
       <%= f.input :public, label: "Nombre de participants", class: "form-control rounded-3 d-inline-block" %>
       <%= f.input :venue, label: "Salle de concert", class: "form-control rounded-3 d-inline-block" %>
       <%= f.input :image, as: :file, label: "Image de l'événement", class: "form-control rounded-3 d-inline-block" %>
-      <%= f.submit "Ajouter", class: "form_btn" %>
+      <%= f.submit "Modifier", class: "form_btn" %>
     <% end %>
   </div>
 </div>
