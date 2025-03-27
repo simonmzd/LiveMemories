@@ -8,8 +8,9 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-User.destroy_all
 Concert.destroy_all
+User.destroy_all
+
 
 
 mel = User.create(email: "melanie.lepage86@hotmail.fr", password: "livememories", username: "mel")
