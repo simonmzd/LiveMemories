@@ -15,9 +15,9 @@ class ParticipationsController < ApplicationController
     @concert = Concert.find(params[:concert_id])
     @participation = Participation.find_by(concert: @concert, user: current_user)
     if @participation&.destroy
-      redirect_to @concert, notice: "Tu ne participes plus à ce concert."
+      redirect_to concert_path(@concert), notice: "Tu ne participes plus à ce concert."
     else
-      redirect_to @concert, alert: "Erreur, impossible de supprimer la participation."
+      redirect_to concert_path(@concert), alert: "Erreur, impossible de supprimer la participation."
     end
   end
 end
