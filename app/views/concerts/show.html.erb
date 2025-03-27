@@ -16,11 +16,11 @@
 
             <% if user_signed_in? %>
               <% if current_user.attended_concerts.include?(@concert) %>
-                <%= link_to "Je n'y suis pas allé 🙁", concert_participation_path(@concert),
-                            data: { turbo_method: :delete }, class: "participate-button btn-unparticipate" %>
+                <%= link_to "J'y suis allé 🙂", concert_participation_path(@concert),
+                            data: { turbo_method: :delete }, class: "participate-button btn-participate" %>
               <% else %>
-                <%= link_to "J'y suis allé 🙂", concert_participations_path(@concert),
-                            data: { turbo_method: :post }, class: "participate-button btn-participate" %>
+                <%= link_to "Je n'y suis pas allé 🙁", concert_participations_path(@concert),
+                            data: { turbo_method: :post }, class: "participate-button btn-unparticipate" %>
               <% end %>
             <% end %>
           </p>

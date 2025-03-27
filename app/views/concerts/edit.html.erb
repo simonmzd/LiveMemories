@@ -3,17 +3,32 @@
     <i class="fa-solid fa-arrow-left"></i>
   <% end %>
   <div class="mt-5 pt-4">
-    <h1 style="color: white">Modifier le concert</h1>
+    <h1 style="color: white">Modofier le concert</h1>
       <%= simple_form_for [@concert] do |f| %>
-      <%= f.input :title, label: "Titre du concert" %>
-      <%= f.input :description, label: "Description" %>
-      <%= f.input :genre, label: "Genre musical" %>
-      <%= f.input :date, label: "Date du concert" %>
-      <%= f.input :localisation, label: "Ville" %>
-      <%= f.input :public, label: "Nombre de participants attendus" %>
-      <%= f.input :venue, label: "Salle de concert" %>
-      <%= f.input :image, as: :file, label: "Image de l'événement" %>
-      <%= f.submit "Modifier", class: "form_btn" %>
+      <%= f.input :title, label: "Titre du concert", class: "form-control rounded-3 d-inline-block" %>
+      <%= f.input :description, label: "Description", class: "form-control rounded-3 d-inline-block" %>
+      <div class="d-flex gap-3">
+        <div class="w-50">
+          <%= f.input :genre,
+                      collection: %w(Ambiant Classique Electro Jazz Kpop Metal Multi Pop R&B Reggae Rap Rock Variété),
+                      label: "Genre musical",
+                      class: "form-control rounded-3 d-inline-block" %>
+        </div>
+        <div class="w-50">
+          <%= f.input :date,
+                      as: :string,
+                              input_html: {
+                                data: { controller: "datepicker" },
+                                class: "form-control rounded-3 d-inline-block",
+                                label: "Date du concert",
+                              } %>
+        </div>
+      </div>
+      <%= f.input :localisation, label: "Ville", class: "form-control rounded-3 d-inline-block" %>
+      <%= f.input :public, label: "Nombre de participants", class: "form-control rounded-3 d-inline-block" %>
+      <%= f.input :venue, label: "Salle de concert", class: "form-control rounded-3 d-inline-block" %>
+      <%= f.input :image, as: :file, label: "Image de l'événement", class: "form-control rounded-3 d-inline-block" %>
+      <%= f.submit "Ajouter", class: "form_btn" %>
     <% end %>
   </div>
 </div>
