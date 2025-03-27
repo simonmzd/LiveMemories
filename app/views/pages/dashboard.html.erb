@@ -28,7 +28,7 @@
 
   <% if user_signed_in? %>
     <div class="section">
-      <h2 class="section-title">Mes Concerts Participés</h2>
+      <h2 class="section-title">J'y étais</h2>
       <div class="grid">
         <% current_user.attended_concerts.each do |concert| %>
           <div class="card">
@@ -47,10 +47,10 @@
 
   <div class="section">
     <div class="d-flex justify-content-start align-items-center">
-      <h2 class="section-title me-3">Concerts</h2>
+      <h2 class="section-title section-title-concerts me-3">Concerts</h2>
       <%= link_to new_concert_path, class: "add_concert_btn_dash" do %>
-          <i class="fa-solid fa-plus"></i>
-        <% end %>
+        <i class="fa-solid fa-plus"></i>
+      <% end %>
     </div>
     <div class="grid">
       <% @my_concerts.each do |concert| %>
@@ -61,11 +61,11 @@
               <div class="card-title"><%= concert.title %></div>
               <div class="card-date"><%= concert.date.strftime("%d/%m/%Y") %></div>
             </div>
-            <div class="card-actions">
-              <%= link_to "✏️", edit_concert_path(concert) %>
-              <%= link_to "🗑️", concert_path(concert), data: { turbo_method: :delete, turbo_confirm: "Voulez-vous vraiment supprimer ?" } %>
-            </div>
           <% end %>
+          <div class="card-actions">
+            <%= link_to "✏️", edit_concert_path(concert) %>
+            <%= link_to "🗑️", concert_path(concert), data: { turbo_method: :delete, turbo_confirm: "Voulez-vous vraiment supprimer ?" } %>
+          </div>
         </div>
       <% end %>
     </div>
