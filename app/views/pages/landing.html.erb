@@ -1,8 +1,13 @@
+<video class="video-background" autoplay muted loop>
+  <source src="<%= asset_path('back.mp4') %>" type="video/mp4">
+  Votre navigateur ne supporte pas la vidéo.
+</video>
+
 <div class="landing-container">
   <main>
     <h1 class="landing-title">Live Memories</h1>
     <div class="illustration">
-      <%= image_tag "landingpage.png", alt: "Landing Illustration", class: "illustration-img" %>
+      <%= image_tag "zz.png", alt: "Landing Illustration", class: "illustration-img" %>
     </div>
     <% if user_signed_in? %>
       <%= link_to "Voir les concerts", concerts_path, class: "btn" %>
@@ -11,6 +16,5 @@
       <%= link_to "CONNEXION/INSCRIPTION", auth_path, class: "btn" %>
       <%= link_to "Parcourir", concerts_path, class: "link" %>
     <% end %>
-
   </main>
 </div>

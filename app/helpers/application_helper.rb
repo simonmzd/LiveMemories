@@ -15,4 +15,5 @@ module ApplicationHelper
   def jour_en_francais(date)
     JOURS_FR[date.strftime("%a")].upcase
   end
+
 end
