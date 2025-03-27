@@ -17,9 +17,21 @@
   font-weight: bold;
   color: #ffffff;
   margin-bottom: 20px;
-  border-bottom: 2px solid #333;
   padding-bottom: 10px;
   text-transform: uppercase;
+  display: inline-block;
+  border-bottom: 2px solid #333;
+}
+
+.section-title-concerts {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  text-transform: uppercase;
+  display: inline-block;
+  border-bottom: 2px solid #333;
 }
 
 .grid {
@@ -34,6 +46,9 @@
   box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
   overflow: hidden;
   transition: transform 0.2s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   &:hover {
     transform: translateY(-5px);
@@ -45,6 +60,7 @@
   color: inherit;
   display: block;
   width: 100%;
+  flex-grow: 1;
 }
 
 .card-image {
@@ -172,4 +188,20 @@
 .stat {
   font-size: 14px;
   color: #6b7280;
+}
+
+
+.add_concert_btn_dash {
+  color: #4D0EFF;
+  text-decoration: none;
+  font-size: 1rem;
+  margin-left: 10px;
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+}
+
+.add_concert_btn_dash i {
+  font-size: 1.2rem;
+  color: #ffffff;
 }
